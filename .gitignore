@@ -1,0 +1,53 @@
+# Catkin and CMake build artifacts
+/build/
+/devel/
+/install/
+/build_isolated/
+/devel_isolated/
+/install_isolated/
+/log/
+/logs/
+/.catkin_tools/
+/CMakeFiles/
+/CMakeCache.txt
+/Makefile
+/cmake_install.cmake
+/CTestTestfile.cmake
+/compile_commands.json
+/catkin_generated/
+*.o
+*.a
+*.so
+*.so.*
+
+# Python caches and local virtual environments
+__pycache__/
+*.py[cod]
+/.venv/
+/venv/
+/.pytest_cache/
+/.cache/
+
+# ROS recordings, logs and temporary files
+*.bag
+*.bag.active
+*.log
+*.tmp
+
+# Local video inputs, video exports and generated camera trajectories
+/docs/*.mp4
+/docs/*.m4v
+/docs/*.mov
+/docs/*.avi
+/docs/*.mkv
+/docs/*_camera_trajectory.csv
+
+# Editor and operating system files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
