@@ -1,0 +1,545 @@
+schema_version: 1
+frame_id: map
+resolution: 0.5
+origin:
+- -580.0
+- 157.0
+size_cells:
+- 240
+- 240
+geographic_reference:
+  surface_model: EARTH_WGS84
+  world_frame_orientation: ENU
+  latitude_deg: 30.3143
+  longitude_deg: 120.338
+  elevation: 0.0
+  heading_deg: 0.0
+shore_min_z: -0.5
+primitive_max_z: 2.2
+unknown_instance_prefixes:
+- custom_dock_block_
+- dynamic_obstacle_
+families:
+  map1:
+    variants:
+      map1-1.world:
+        source: package://ocean_simulation_gazebo/worlds/usv_path_planning/map1-1.world
+        excluded_instances: []
+      map1-2.world:
+        source: package://ocean_simulation_gazebo/worlds/usv_path_planning/map1-2.world
+        excluded_instances:
+        - custom_dock_block_1
+        - custom_dock_block_2
+        - custom_dock_block_3
+        - custom_dock_block_4
+        - custom_dock_block_5
+        - custom_dock_block_6
+      map1-3.world:
+        source: package://ocean_simulation_gazebo/worlds/usv_path_planning/map1-3.world
+        excluded_instances:
+        - custom_dock_block_1
+        - custom_dock_block_4
+        - custom_dock_block_6
+        - dynamic_obstacle_1
+        - dynamic_obstacle_2
+    known_instances:
+    - name: antenna
+      uri: model://antenna
+      pose:
+      - -531.064
+      - 147.669
+      - 1.59471
+      - -0.068142
+      - 0.0
+      - -0.1
+    - name: blue_projectile
+      uri: model://blue_projectile
+      pose:
+      - -545.0
+      - 60.0
+      - 0.03
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: ground_station_0
+      uri: model://ground_station
+      pose:
+      - -540.796
+      - 146.494
+      - 1.67142
+      - -0.00834
+      - 0.01824
+      - 1.30173
+    - name: ground_station_1
+      uri: model://ground_station
+      pose:
+      - -537.623
+      - 145.828
+      - 1.68193
+      - -0.00603
+      - 0.018667
+      - 1.30157
+    - name: ground_station_2
+      uri: model://ground_station
+      pose:
+      - -534.551
+      - 144.91
+      - 1.72047
+      - -0.004994
+      - 0.020798
+      - 1.30149
+    - name: ocean_waves
+      uri: model://map1_ocean
+      pose:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+    - name: post_0
+      uri: model://post
+      pose:
+      - -535.917
+      - 154.363
+      - 0.675884
+      - -0.17182
+      - 0.030464
+      - -0.005286
+    - name: post_1
+      uri: model://post
+      pose:
+      - -527.49
+      - 153.855
+      - 0.425844
+      - -0.1365
+      - 0.0
+      - 0.0
+    - name: post_2
+      uri: model://post
+      pose:
+      - -544.833
+      - 156.672
+      - 0.499025
+      - -0.162625
+      - 0.0
+      - 0.0
+    - name: robotx_dock_2018
+      uri: model://dock_2018_dynamic
+      pose:
+      - -568.305
+      - 196.321
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_0
+      uri: model://dock_2018_dynamic
+      pose:
+      - -545.877
+      - 196.16
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_1
+      uri: model://dock_2018_dynamic
+      pose:
+      - -545.393
+      - 175.404
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_2
+      uri: model://dock_2018_dynamic
+      pose:
+      - -522.785
+      - 175.318
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_3
+      uri: model://dock_2018_dynamic
+      pose:
+      - -533.061
+      - 217.882
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_4
+      uri: model://dock_2018_dynamic
+      pose:
+      - -510.207
+      - 217.952
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_5
+      uri: model://dock_2018_dynamic
+      pose:
+      - -510.131
+      - 241.891
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_6
+      uri: model://dock_2018_dynamic
+      pose:
+      - -556.366
+      - 218.585
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2022
+      uri: model://map1_dock_2022
+      pose:
+      - -503.04
+      - 175.318
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2022_0
+      uri: model://map1_dock_2022
+      pose:
+      - -536.714
+      - 226.115
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2022_1
+      uri: model://map1_dock_2022
+      pose:
+      - -490.936
+      - 217.293
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2022_2
+      uri: model://map1_dock_2022
+      pose:
+      - -490.956
+      - 237.54
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: sydneyregatta
+      uri: model://sydney_regatta
+      pose:
+      - 0.0
+      - 0.0
+      - 0.2
+      - 0.0
+      - -0.0
+      - 0.0
+    occupied_cells: 5874
+    geometry_counts:
+      primitive_collisions: 283
+      mesh_triangles: 4801
+  map2:
+    variants:
+      map2-1.world:
+        source: package://ocean_simulation_gazebo/worlds/usv_path_planning/map2-1.world
+        excluded_instances:
+        - custom_dock_block_1-1
+        - custom_dock_block_1-2
+        - custom_dock_block_1-3
+        - custom_dock_block_1-4
+        - custom_dock_block_2-1
+        - custom_dock_block_2-2
+        - custom_dock_block_2-3
+        - custom_dock_block_2-4
+        - custom_dock_block_3-1
+        - custom_dock_block_3-2
+        - custom_dock_block_3-3
+        - custom_dock_block_3-4
+        - custom_dock_block_4-1
+        - custom_dock_block_4-2
+        - custom_dock_block_4-3
+        - custom_dock_block_4-4
+        - custom_dock_block_a
+        - custom_dock_block_b
+        - custom_dock_block_c
+        - dynamic_obstacle_3
+      map2-2.world:
+        source: package://ocean_simulation_gazebo/worlds/usv_path_planning/map2-2.world
+        excluded_instances: []
+    known_instances:
+    - name: antenna
+      uri: model://antenna
+      pose:
+      - -531.064
+      - 147.669
+      - 1.59471
+      - -0.068142
+      - 0.0
+      - -0.1
+    - name: blue_projectile
+      uri: model://blue_projectile
+      pose:
+      - -545.0
+      - 60.0
+      - 0.03
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: ground_station_0
+      uri: model://ground_station
+      pose:
+      - -540.796
+      - 146.494
+      - 1.67142
+      - -0.00834
+      - 0.01824
+      - 1.30173
+    - name: ground_station_1
+      uri: model://ground_station
+      pose:
+      - -537.623
+      - 145.828
+      - 1.68193
+      - -0.00603
+      - 0.018667
+      - 1.30157
+    - name: ground_station_2
+      uri: model://ground_station
+      pose:
+      - -534.551
+      - 144.91
+      - 1.72047
+      - -0.004994
+      - 0.020798
+      - 1.30149
+    - name: ocean_waves
+      uri: model://map1_ocean
+      pose:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+    - name: post_0
+      uri: model://post
+      pose:
+      - -535.917
+      - 154.363
+      - 0.675884
+      - -0.17182
+      - 0.030464
+      - -0.005286
+    - name: post_1
+      uri: model://post
+      pose:
+      - -527.49
+      - 153.855
+      - 0.425844
+      - -0.1365
+      - 0.0
+      - 0.0
+    - name: post_2
+      uri: model://post
+      pose:
+      - -544.833
+      - 156.672
+      - 0.499025
+      - -0.162625
+      - 0.0
+      - 0.0
+    - name: robotx_dock_2018
+      uri: model://dock_2018_dynamic
+      pose:
+      - -568.305
+      - 196.321
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_0
+      uri: model://dock_2018_dynamic
+      pose:
+      - -545.877
+      - 196.16
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_1
+      uri: model://dock_2018_dynamic
+      pose:
+      - -545.393
+      - 175.404
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_1_clone
+      uri: model://dock_2018_dynamic
+      pose:
+      - -548.837
+      - 175.353
+      - -0.118926
+      - 0.001312
+      - -0.006723
+      - -6.0e-06
+    - name: robotx_dock_2018_2
+      uri: model://dock_2018_dynamic
+      pose:
+      - -522.785
+      - 175.318
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_3
+      uri: model://dock_2018_dynamic
+      pose:
+      - -533.061
+      - 217.882
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_4
+      uri: model://dock_2018_dynamic
+      pose:
+      - -510.207
+      - 217.952
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_5
+      uri: model://dock_2018_dynamic
+      pose:
+      - -510.131
+      - 241.891
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2018_6
+      uri: model://dock_2018_dynamic
+      pose:
+      - -556.366
+      - 218.585
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2022
+      uri: model://map1_dock_2022
+      pose:
+      - -503.04
+      - 175.318
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2022_0
+      uri: model://map1_dock_2022
+      pose:
+      - -536.714
+      - 226.115
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2022_0_clone
+      uri: model://map1_dock_2022
+      pose:
+      - -510.876
+      - 204.626
+      - -0.110702
+      - -0.000626
+      - -0.030207
+      - -0.001586
+    - name: robotx_dock_2022_1
+      uri: model://map1_dock_2022
+      pose:
+      - -490.936
+      - 217.293
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2022_2
+      uri: model://map1_dock_2022
+      pose:
+      - -490.956
+      - 237.54
+      - 0.0
+      - 0.0
+      - -0.0
+      - 0.0
+    - name: robotx_dock_2022_clone
+      uri: model://map1_dock_2022
+      pose:
+      - -490.99
+      - 196.534
+      - -0.160401
+      - -0.003809
+      - -0.021412
+      - -0.000363
+    - name: sydneyregatta
+      uri: model://sydney_regatta
+      pose:
+      - 0.0
+      - 0.0
+      - 0.2
+      - 0.0
+      - -0.0
+      - 0.0
+    occupied_cells: 6750
+    geometry_counts:
+      primitive_collisions: 353
+      mesh_triangles: 4801
+sources_sha256:
+  package://ocean_simulation_gazebo/models/other/map1_dock_2022/model.config: a3a61831f61bd1d372ddd0e21766ea581f491d3ceddefb59109efd024aeee891
+  package://ocean_simulation_gazebo/models/other/map1_dock_2022/model.sdf: 9873e25a9f7769b597f8a86ac72efa8378c1cca19354f64a2d638280c22e4b60
+  package://ocean_simulation_gazebo/models/other/map1_ocean/model.config: ee96c75cdfb84a4a70bcdcd0797047bfaae7662a828c45c2e752e021aa572e62
+  package://ocean_simulation_gazebo/models/other/map1_ocean/model.sdf: afead77b8e83d5018148ecc7b3235de828b4da236f9dfc24b2d76a37006780ee
+  package://ocean_simulation_gazebo/models/vehicle/wamv/model.sdf: 625526b4b8ccbaf7a4306addafb2752273d52893dda5ffa4db007916dc55bc5f
+  package://ocean_simulation_gazebo/worlds/usv_path_planning/map1-1.world: 8838b8df0f5fac95478524537ddacfbf5b5ed61751066489875b96dc4e9392b1
+  package://ocean_simulation_gazebo/worlds/usv_path_planning/map1-2.world: 5f25454f8f9e9cc03d4a00ac6e00fa1ef54cdff8cc739be9bc33524e045adafa
+  package://ocean_simulation_gazebo/worlds/usv_path_planning/map1-3.world: 2785ef4093f8dcc9bb31cfc961891f4bf7045a6a2420d9bcf894c7c52ed7000b
+  package://ocean_simulation_gazebo/worlds/usv_path_planning/map2-1.world: 40e1e5cdd0313322e80d52f48a49685720824932aad6c107d5bddff8ed9ee8b0
+  package://ocean_simulation_gazebo/worlds/usv_path_planning/map2-2.world: 0697ff19f04a3db508d6e262523a82d9fde2bdefd3a7a511bc2d415943b2f11c
+  package://vrx_gazebo/models/antenna/model.config: f7ec13827a02369f342c57384b4ff43e585ebd614384171c2f8242aeb6d7da7c
+  package://vrx_gazebo/models/antenna/model.sdf: c87dc73eac67b33b35923bd04b32e8467acdf20c64ef407b322927c8152bd89b
+  package://vrx_gazebo/models/blue_projectile/model.config: 43506a1a42632b8cafaef2219a5d592a8b66bbb494b257af8c8b0040149d2302
+  package://vrx_gazebo/models/blue_projectile/model.sdf: 7eb36cb11bc021b0120a7a2fb99ce55005f7c8e20d61144f76bd501e6c70a267
+  package://vrx_gazebo/models/dock_2018_base_dynamic/model.config: 8c0f00af72d19a4c903e7584512ae9557ddb570a9e1bb59f4de6c11929d4178c
+  package://vrx_gazebo/models/dock_2018_base_dynamic/model.sdf: 0c83b69a9a3c91f4923011e82f1efcef7a89b5c18bfbb2fda8f9f588c2eed6bb
+  package://vrx_gazebo/models/dock_2018_dynamic/model.config: 7519547c7aecd44674f60e5c495d6233596b4ad86b31c24c216d0602d185eb98
+  package://vrx_gazebo/models/dock_2018_dynamic/model.sdf: 8e2703174b9f808ecba88084a5eede1393ab13d8ad09064f2db40b0373ec3cac
+  package://vrx_gazebo/models/dock_2022_base_dynamic/model.config: 8ecc4c5fbb6943a8a90063d1bae8dc9087fc8b4085bcb16dfd7561b34cd3bf02
+  package://vrx_gazebo/models/dock_2022_base_dynamic/model.sdf: 5602aaa6d919918f8378530a977a89d4600ad5e8d00f2f16be31de3b6a06a2a7
+  package://vrx_gazebo/models/dock_block_4x4_dynamic/model.config: fa26f5b136a72cba8fc69c2414d0cb96bae532ea5082d9d5e46b4c8fd5d343cd
+  package://vrx_gazebo/models/dock_block_4x4_dynamic/model.sdf: b172687e52476f3dad8dca666572f17a6bbb331a89552365a7af9b481b9a4120
+  package://vrx_gazebo/models/foldable_chair/model.config: 50e6d163666f7d591097dc6648e638cfdb7a5dc9c132f7e3547792362d8d20d7
+  package://vrx_gazebo/models/foldable_chair/model.sdf: 1d44daf17ca6eb5821ff0dc3a084c7f6eb4b64320f9a90834f2571580365b1fc
+  package://vrx_gazebo/models/foldable_table/model.config: 800f41a313d0bf92169d96318383f1625fd8195954160f8f0acaf17bd3b59f28
+  package://vrx_gazebo/models/foldable_table/model.sdf: 9fa10aa5a26baf4679d60409214c8c2d3f3ba733427e9dd7d28d6a6026f9b3f1
+  package://vrx_gazebo/models/ground_station/model.config: 7dbeddf95b88b57c2f4d61cd5d72f3ae04b22bd93bb97a4a9b2a3eea53acfb23
+  package://vrx_gazebo/models/ground_station/model.sdf: 7f35561eb831be4dfb4e3cc7f8f8009f4881519daca3e126da5927300150fdbc
+  package://vrx_gazebo/models/placard/model.config: a3f474cb3fa66b8a259748eeb3191b54983ec07f7ae61e043b0ae4855dcf4959
+  package://vrx_gazebo/models/placard/model.sdf: cd09a9cfd58ed95402875419f0179dfed1267e8ad72bc627db025ee56e974af7
+  package://vrx_gazebo/models/placard_2022/model.config: 184f25983883b6fe11aa4d1d0060586147fff14673d38704d858102a88b98740
+  package://vrx_gazebo/models/placard_2022/model.sdf: 223198626ed8b711361a7e4f80f5cdcf0282d524c9123be37ca9f170a1b39c7d
+  package://vrx_gazebo/models/post/model.config: 9db74332fe0590be46d0ce19754dbd62b535c4ca8261c4bfa16ba91ad76b6d04
+  package://vrx_gazebo/models/post/model.sdf: 067666f7dd2156dbcbbc2daf0e2610158c5e2a28d2b15c2eac944a5626bd0c3f
+  package://vrx_gazebo/models/sydney_regatta/meshes/sydney_regatta_shore.dae: 59eb8247847b33906b44a8f8ad76b6d8bd95b9f0a0fa5f1508960d83601275b1
+  package://vrx_gazebo/models/sydney_regatta/model.config: be71ec14038d44f3a26413dec2791ed22e18e4ac18c4afb2d65ae50f6c3982f2
+  package://vrx_gazebo/models/sydney_regatta/model.sdf: 0256c2b968f356d452c4b357821503179ed4259d96c0791043d1232340491088
+  package://vrx_gazebo/models/tent/model.config: 80bb6c8094c60b95567a7b6fe61354f35e3fd36768a1fa56d734d20a7938574b
+  package://vrx_gazebo/models/tent/model.sdf: 7ddeec54f065990662db0eb88c1c7cca88c02477dd9ffd08f2c4e654133edc8c

@@ -1,0 +1,15 @@
+# Load under /wamv.  These are the existing VelocityControl.py private keys.
+# Match the planner's 0.5 m/s^2 and 0.5 rad/s^2 acceleration limits.
+# Its 10 Hz dynamic window normally requests at most 0.05 m/s or rad/s
+# above measured velocity. P=4 gives useful force against the SDF's water
+# damping (xU=51.3, xUU=72.4, nR=400), rather than stalling near zero.
+# Integral and derivative terms start disabled; final forces are independently
+# constrained by the adapter using the actual GLF mapping and common scaling.
+velocity_control/linear_p: 4.0
+velocity_control/linear_i: 0.0
+velocity_control/linear_d: 0.0
+velocity_control/linear_sat: 0.5
+velocity_control/angular_p: 4.0
+velocity_control/angular_i: 0.0
+velocity_control/angular_d: 0.0
+velocity_control/angular_sat: 0.5

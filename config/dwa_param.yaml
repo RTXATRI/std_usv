@@ -1,0 +1,36 @@
+# Coordinator frames, motion limits and input protection.
+ROBOT_FRAME: wamv/base_link
+MAX_VELOCITY: 1.0
+MIN_VELOCITY: 0.0
+MAX_YAWRATE: 0.5
+MAX_D_YAWRATE: 0.5
+MAX_ACCELERATION: 0.5
+FOOTPRINT_MARGIN: 0.3
+INFLATION_RADIUS: 2.0
+INPUT_TIMEOUT: 0.5
+
+# DWA sampling, costs and navigation tolerances.
+# Preferred forward velocity (m/s); MAX_VELOCITY remains the speed limit.
+PREFERRED_VELOCITY: 0.8
+VELOCITY_RESOLUTION: 0.1
+YAWRATE_RESOLUTION: 0.05
+PREDICT_TIME: 5.0
+SIMULATION_DT: 0.1
+TO_GOAL_COST_GAIN: 1.0
+OBSTACLE_COST_GAIN: 25.0
+SPEED_COST_GAIN: 0.0
+# Heading error toward the goal position, independent of its final yaw.
+GOAL_BEARING_COST_GAIN: 0.0
+MAX_DIST: 30.0
+GOAL_THRESHOLD: 1.0
+# Final goal-yaw tolerance (rad).
+GOAL_YAW_TOLERANCE: 0.15
+SETTLE_SECONDS: 2.0
+SETTLE_VELOCITY_THRESHOLD: 0.05
+SETTLE_YAWRATE_THRESHOLD: 0.05
+TRANSFORM_TIMEOUT: 0.1
+# Sensor-only temporary routing layer; surveyed map assets stay unchanged.
+OBSERVATION_TTL: 5.0
+OBSERVATION_REPLAN_INTERVAL: 1.0
+STALL_TIMEOUT: 2.0
+KNOWN_RETURN_TOLERANCE: 0.5

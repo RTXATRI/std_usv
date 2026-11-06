@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Navigation only; use demo_astar_dwa.launch to also create the simulator. -->
+  <arg name="world" default="$(find ocean_simulation_gazebo)/worlds/usv_path_planning/map1-3.world"/>
+  <arg name="usv_x" default="-570"/>
+  <arg name="usv_y" default="167"/>
+  <arg name="usv_yaw" default="1"/>
+  <arg name="use_initial_goal" default="true"/>
+  <arg name="goal_frame" default="map"/>
+  <arg name="goal_x" default="-500"/>
+  <arg name="goal_y" default="232"/>
+  <arg name="goal_yaw" default="0"/>
+  <arg name="hz" default="10"/>
+  <arg name="rviz" default="true"/>
+  <arg name="dynamic_obstacles" default="false"/>
+  <arg name="buoy_speed" default="0.7"/>
+  <arg name="map_yaml" default=""/>
+  <arg name="dwa_param" default="$(find std_usv)/config/dwa_param.yaml"/>
+  <rosparam command="load" file="$(find std_usv)/config/wamv_model.yaml" ns="/wamv"/>
+  <!-- Sensor visibility, kinematics, localization and lidar. -->
+  <!-- Hide only the known docks' nonphysical bay debug boxes from rendered
+       sensors, while retaining their Gazebo GUI appearance. -->
+  <node pkg="std_usv" type="navigation_visual_filter_node" name="navigation_visual_filter"
+        required="true" output="screen">
+    <param name="world" value="$(arg world)"/>
+  </node>
+  <node pkg="tf2_ros" type="static_transform_publisher" name="navigation_world_map"
+        args="0 0 0 0 0 0 world map"/>
+  <node pkg="tf2_ros" type="static_transform_publisher" name="navigation_map_odom"
+        args="0 0 0 0 0 0 map wamv/odom"/>
+  <group ns="wamv">
+    <!-- Kinematics only: the existing Demo spawns the SDF exactly once. -->
+    <param name="robot_description"
+           command="$(find xacro)/xacro '$(find wamv_gazebo)/urdf/wamv_gazebo.urdf.xacro' namespace:=wamv thruster_config:=X vrx_sensors_enabled:=true locked:=false"/>
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+      <param name="rate" value="30"/>
+      <param name="use_gui" value="false"/>
+    </node>
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+      <param name="publish_frequency" value="30"/>
+    </node>
+    <group ns="robot_localization">
+      <node pkg="robot_localization" type="ekf_localization_node" name="ekf" output="screen">
+        <rosparam command="load" file="$(find std_usv)/config/localization.yaml"/>
+        <!-- An initial estimate, never a ground-truth pose subscription. -->
+        <rosparam param="initial_state" subst_value="true">[$(arg usv_x), $(arg usv_y), 0, 0, 0, $(arg usv_yaw), 0, 0, 0, 0, 0, 0, 0, 0, 0]</rosparam>
+      </node>
+      <node pkg="robot_localization" type="navsat_transform_node" name="navsat" output="screen">
+        <rosparam command="load" file="$(find std_usv)/config/navsat.yaml"/>
+        <remap from="gps/fix" to="/wamv/sensors/gps/gps/fix"/>
+        <remap from="imu/data" to="/wamv/sensors/imu/imu/data"/>
+      </node>
+    </group>
+  </group>
+  <node pkg="std_usv" type="navigation_cloud_filter.py" name="navigation_cloud_filter" output="screen"/>
+  <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="navigation_laserscan" output="screen">
+    <rosparam command="load" file="$(find std_usv)/config/laserscan.yaml"/>
+    <remap from="cloud_in" to="/wamv/navigation/points_filtered"/>
+    <remap from="scan" to="/scan"/>
+  </node>
+  <node pkg="std_usv" type="navigation_map_publisher.py" name="navigation_map" required="true" output="screen">
+    <param name="world" value="$(arg world)"/>
+    <param name="map_yaml" value="$(arg map_yaml)"/>
+  </node>
+  <node pkg="std_usv" type="navigation_goal_relay" name="goal_relay" ns="/wamv/navigation" output="screen">
+    <param name="use_initial_goal" value="$(arg use_initial_goal)"/>
+    <param name="goal_frame" value="$(arg goal_frame)"/>
+    <param name="goal_x" value="$(arg goal_x)"/>
+    <param name="goal_y" value="$(arg goal_y)"/>
+    <param name="goal_yaw" value="$(arg goal_yaw)"/>
+  </node>
+  <node pkg="std_usv" type="navigation_coordinator_node" name="coordinator" ns="/wamv/navigation" output="screen">
+    <rosparam command="load" file="$(arg dwa_param)"/>
+    <param name="HZ" value="$(arg hz)"/>
+    <remap from="/cmd_vel" to="/wamv/cmd_vel"/>
+    <remap from="/odom" to="/wamv/robot_localization/odometry/filtered"/>
+  </node>
+  <!-- Velocity control, force allocation and final output protection. -->
+  <group ns="wamv">
+    <rosparam command="load" file="$(find std_usv)/config/velocity_pid.yaml"/>
+    <node pkg="cascaded_pid_controller" type="VelocityControl.py" name="velocity_control" output="screen">
+      <remap from="/wamv/pose_gt" to="/wamv/robot_localization/odometry/filtered"/>
+    </node>
+    <node pkg="cascaded_pid_controller" type="AccelerationControl.py" name="acceleration_control" output="screen"/>
+  </group>
+  <node pkg="wamv_thruster_manager" type="thrust_allocator.py" name="thrust_allocator" output="screen">
+    <rosparam command="load" file="$(find wamv_thruster_manager)/config/wamv/TAM.yaml"/>
+    <remap from="left_front_thrust_cmd" to="/wamv/navigation/raw_thrusters/left_front_thrust_cmd"/>
+    <remap from="right_front_thrust_cmd" to="/wamv/navigation/raw_thrusters/right_front_thrust_cmd"/>
+    <remap from="left_rear_thrust_cmd" to="/wamv/navigation/raw_thrusters/left_rear_thrust_cmd"/>
+    <remap from="right_rear_thrust_cmd" to="/wamv/navigation/raw_thrusters/right_rear_thrust_cmd"/>
+  </node>
+  <node pkg="std_usv" type="thruster_output_adapter.py" name="thruster_output_adapter" output="screen">
+    <param name="rate" value="20"/>
+    <param name="odometry_topic" value="/wamv/robot_localization/odometry/filtered"/>
+    <param name="scan_topic" value="/scan"/>
+  </node>
+  <node if="$(arg dynamic_obstacles)" pkg="std_usv" type="navigation_dynamic_buoys.py"
+        name="navigation_dynamic_buoys" output="screen">
+    <param name="world" value="$(arg world)"/>
+    <param name="speed" value="$(arg buoy_speed)"/>
+  </node>
+  <node if="$(arg rviz)" pkg="rviz" type="rviz" name="navigation_rviz"
+        args="-d $(find std_usv)/config/wamv_rviz.rviz" output="screen"/>
+</launch>

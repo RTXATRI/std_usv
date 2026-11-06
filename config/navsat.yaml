@@ -1,0 +1,12 @@
+frequency: 30
+delay: 0.0
+transform_timeout: 0.1
+wait_for_datum: true
+datum: [30.3143, 120.338, 0.0]
+use_local_cartesian: true
+zero_altitude: true
+magnetic_declination_radians: 0.0
+yaw_offset: 0.0
+use_odometry_yaw: false
+broadcast_cartesian_transform: false
+publish_filtered_gps: false

@@ -1,0 +1,68 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+  - Class: rviz/Tool Properties
+    Name: Tool Properties
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: map
+    Background Color: 40; 40; 40
+    Frame Rate: 20
+  Displays:
+    - Class: rviz/Map
+      Name: Known environment
+      Enabled: true
+      Topic: /map
+      Alpha: 0.6
+      Color Scheme: map
+    - Class: rviz/RobotModel
+      Name: WAM-V
+      Enabled: true
+      Robot Description: /wamv/robot_description
+      Visual Enabled: true
+      Collision Enabled: false
+    - Class: rviz/LaserScan
+      Name: Navigation scan
+      Enabled: true
+      Topic: /scan
+      Size (m): 0.15
+      Style: Points
+      Color Transformer: FlatColor
+      Color: 255; 180; 50
+    - Class: rviz/Path
+      Name: A star path
+      Enabled: true
+      Topic: /wamv/navigation/global_path
+      Color: 0; 255; 255
+      Line Style: Lines
+      Line Width: 0.15
+    - Class: rviz/Pose
+      Name: Current goal
+      Enabled: true
+      Topic: /wamv/navigation/goal_request
+      Color: 255; 60; 80
+    - Class: rviz/MarkerArray
+      Name: DWA candidates
+      Enabled: true
+      Marker Topic: /wamv/navigation/coordinator/candidate_trajectories
+    - Class: rviz/Marker
+      Name: DWA selected
+      Enabled: true
+      Marker Topic: /wamv/navigation/coordinator/selected_trajectory
+  Tools:
+    - Class: rviz/Interact
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/SetGoal
+      Topic: /wamv/navigation/goal
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 125
+      Focal Point: {X: -530, Y: 210, Z: 0}
+      Pitch: 1.1
+      Yaw: 0.8
+Window Geometry:
+  Width: 1280
+  Height: 900

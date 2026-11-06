@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="world" default="$(find ocean_simulation_gazebo)/worlds/usv_path_planning/map1-3.world"/>
+  <arg name="gui" default="true"/>
+  <arg name="paused" default="false"/>
+  <arg name="verbose" default="false"/>
+  <arg name="usv_x" default="-570"/>
+  <arg name="usv_y" default="167"/>
+  <arg name="usv_z" default="0.1"/>
+  <arg name="usv_roll" default="0"/>
+  <arg name="usv_pitch" default="0"/>
+  <arg name="usv_yaw" default="1"/>
+  <arg name="use_initial_goal" default="true"/>
+  <arg name="goal_frame" default="map"/>
+  <arg name="goal_x" default="-500"/>
+  <arg name="goal_y" default="232"/>
+  <arg name="goal_yaw" default="0"/>
+  <arg name="hz" default="10"/>
+  <arg name="rviz" default="true"/>
+  <arg name="dynamic_obstacles" default="false"/>
+  <arg name="buoy_speed" default="0.7"/>
+  <arg name="map_yaml" default=""/>
+  <include file="$(find ocean_simulation_gazebo)/launch/demo_usv.launch">
+    <arg name="world" value="$(arg world)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="verbose" value="$(arg verbose)"/>
+    <arg name="usv_x" value="$(arg usv_x)"/>
+    <arg name="usv_y" value="$(arg usv_y)"/>
+    <arg name="usv_z" value="$(arg usv_z)"/>
+    <arg name="usv_roll" value="$(arg usv_roll)"/>
+    <arg name="usv_pitch" value="$(arg usv_pitch)"/>
+    <arg name="usv_yaw" value="$(arg usv_yaw)"/>
+  </include>
+  <include file="$(find std_usv)/launch/astar_dwa_mix.launch">
+    <arg name="world" value="$(arg world)"/>
+    <arg name="usv_x" value="$(arg usv_x)"/>
+    <arg name="usv_y" value="$(arg usv_y)"/>
+    <arg name="usv_yaw" value="$(arg usv_yaw)"/>
+    <arg name="use_initial_goal" value="$(arg use_initial_goal)"/>
+    <arg name="goal_frame" value="$(arg goal_frame)"/>
+    <arg name="goal_x" value="$(arg goal_x)"/>
+    <arg name="goal_y" value="$(arg goal_y)"/>
+    <arg name="goal_yaw" value="$(arg goal_yaw)"/>
+    <arg name="hz" value="$(arg hz)"/>
+    <arg name="rviz" value="$(arg rviz)"/>
+    <arg name="dynamic_obstacles" value="$(arg dynamic_obstacles)"/>
+    <arg name="buoy_speed" value="$(arg buoy_speed)"/>
+    <arg name="map_yaml" value="$(arg map_yaml)"/>
+  </include>
+</launch>
